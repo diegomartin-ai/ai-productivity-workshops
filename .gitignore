@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.tex.bak
+extracted/
+extracted_all/
+*.DS_Store

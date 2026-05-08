@@ -1,0 +1,84 @@
+% GiveDirectly Beamer Theme (Metropolis base) — Claude presentation
+
+\setmainfont{Helvetica Neue}[
+  BoldFont = Helvetica Neue Bold,
+  ItalicFont = Helvetica Neue Italic
+]
+\setsansfont{Helvetica Neue}[
+  BoldFont = Helvetica Neue Bold,
+  ItalicFont = Helvetica Neue Italic
+]
+\setmonofont{Courier New}
+\renewcommand{\familydefault}{\sfdefault}
+
+% GiveDirectly Colors (from pptx theme)
+\definecolor{GDGreen}{RGB}{21,129,88}
+\definecolor{GDBlue}{RGB}{5,141,199}
+\definecolor{GDBlack}{RGB}{0,0,0}
+\definecolor{GDWhite}{RGB}{255,255,255}
+\definecolor{GDLightGray}{RGB}{243,243,243}
+\definecolor{GDDarkGray}{RGB}{51,51,51}
+
+\setbeamercolor{palette primary}{bg=GDGreen,fg=GDWhite}
+\setbeamercolor{title separator}{fg=GDGreen}
+\setbeamercolor{progress bar}{fg=GDGreen,bg=GDLightGray}
+\setbeamercolor{progress bar in head/foot}{fg=GDGreen,bg=GDLightGray}
+\setbeamercolor{progress bar in section page}{fg=GDGreen,bg=GDLightGray}
+\setbeamercolor{frametitle}{bg=GDWhite,fg=GDBlack}
+\setbeamercolor{title}{fg=GDWhite}
+\setbeamercolor{subtitle}{fg=GDWhite}
+\setbeamercolor{author}{fg=GDWhite}
+\setbeamercolor{date}{fg=GDWhite}
+\setbeamercolor{normal text}{fg=GDDarkGray,bg=GDWhite}
+\setbeamercolor{alerted text}{fg=GDGreen}
+\setbeamercolor{structure}{fg=GDGreen}
+\setbeamercolor{block title}{fg=GDWhite,bg=GDGreen}
+\setbeamercolor{block body}{fg=GDDarkGray,bg=GDLightGray}
+
+\metroset{
+  progressbar=frametitle,
+  sectionpage=progressbar,
+  numbering=counter
+}
+
+\makeatletter
+\setlength{\metropolis@progressinheadfoot@linewidth}{1.2pt}
+\makeatother
+\addtobeamertemplate{frametitle}{}{%
+  \usebeamertemplate*{progress bar in head/foot}%
+}
+
+\usepackage{tikz}
+\setbeamertemplate{title page}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=center, inner sep=0pt] at (current page.center) {%
+      \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{figures/gd_hero_claude.jpg}%
+    };
+    \fill[black,opacity=0.5] (current page.north west) rectangle (current page.south east);
+    \node[anchor=north west, inner sep=0pt] at ([xshift=8mm,yshift=-6mm]current page.north west) {%
+      \includegraphics[width=3.5cm]{figures/gd_logo.png}%
+    };
+  \end{tikzpicture}%
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \vfill
+    \usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par
+    \vspace*{0.5em}
+    \usebeamercolor[fg]{subtitle}\usebeamerfont{subtitle}\insertsubtitle\par
+    \usebeamertemplate*{title separator}
+    \vspace*{1.5em}
+    \usebeamercolor[fg]{author}\usebeamerfont{author}\insertauthor\par
+    \vspace*{0.25em}
+    \usebeamercolor[fg]{date}\usebeamerfont{date}\insertdate\par
+    \vfill
+    \vspace*{1mm}
+  \end{minipage}
+}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+\usefonttheme{professionalfonts}
+
+\setlength{\parskip}{4pt}
+
+\usepackage{booktabs}
+\usepackage{graphicx}

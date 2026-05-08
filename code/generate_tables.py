@@ -1,0 +1,26 @@
+import os
+
+os.makedirs('../tables', exist_ok=True)
+
+table = r"""
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Study} & \textbf{Context} & \textbf{Key Finding} & \textbf{Method} \\
+\midrule
+Haushofer \& Shapiro (2016) & Kenya & Assets $\uparrow$ 58\%, consumption $\uparrow$ 23\% & RCT \\
+Egger et al. (2022) & Kenya & \$1.50 local multiplier per \$1 transferred & RCT + GE \\
+McIntosh \& Zeitlin (2022) & Togo & Consumption $\uparrow$ 11\%, poverty $\downarrow$ 5pp & RCT \\
+Blattman et al. (2014) & Uganda & Earnings $\uparrow$ 41\% after 4 years & RCT \\
+Banerjee et al. (2020) & Kenya & Cushioned COVID shock, no labor reduction & RCT \\
+\bottomrule
+\end{tabular}
+\end{table}
+"""
+
+with open('../tables/uct_evidence.tex', 'w') as f:
+    f.write(table)
+
+print("Generated: tables/uct_evidence.tex")

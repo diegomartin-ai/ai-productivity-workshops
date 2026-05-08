@@ -1,0 +1,171 @@
+---
+title: "Using AI to Understand the Effect of Unconditional Cash Transfers on Poverty"
+subtitle: "A Workshop for GiveDirectly Teams"
+author: "Diego A. Martín"
+date: "May 2026"
+---
+
+## Why This Workshop?
+
+GiveDirectly's core question: **Does giving cash reduce poverty, and how do we know?**
+
+- We have a growing body of rigorous evidence on UCTs
+- AI tools can dramatically accelerate how we learn from that evidence
+- This workshop shows practical, low-risk ways to integrate AI into your workflow
+
+**Goal:** Make you faster and more rigorous — not replace your judgment.
+
+## The Research Question
+
+What is the causal effect of unconditional cash transfers on poverty outcomes?
+
+- Consumption and income
+- Asset accumulation
+- Psychological well-being
+- Local economic spillovers (general equilibrium effects)
+
+This is a **fundamentally answerable question** — we have RCTs. AI helps us synthesize and extend what we know.
+
+## The Traditional Research Workflow
+
+![Traditional vs. AI-augmented workflow](figures/workflow_comparison.pdf){width=90%}
+
+## Where AI Fits: Not Everywhere
+
+AI is high-leverage at specific stages:
+
+- **Synthesis** — Extracting structured findings from papers (NotebookLM)
+- **Code generation** — Writing econometric scripts from descriptions (Claude, Copilot)
+- **Exploration** — Rapid data summaries and pattern identification (ChatGPT)
+- **Communication** — Drafting memos and translating results for non-technical audiences
+
+AI is **not** a substitute for: research design, causal identification, or judgment about what matters.
+
+## Use Case 1: Literature Synthesis with NotebookLM
+
+**Problem:** Reading 20 papers on UCT effects takes weeks.
+
+**Solution:** Load papers into NotebookLM and query them directly.
+
+- "What are the consumption effects across all studies?"
+- "Which studies find general equilibrium effects?"
+- "What are the main threats to identification?"
+
+**Why NotebookLM over ChatGPT Deep Research?** It only answers from your sources — no hallucination, no invented citations.
+
+## Use Case 1: Example Prompt
+
+Upload [@haushofer2016short], [@egger2022general], [@mcintosh2022cash] to NotebookLM, then ask:
+
+> "Summarize the consumption effects found in each study. Include the point estimate, confidence interval, and time horizon."
+
+**Output:** A structured comparison table you can verify against the source papers in seconds.
+
+## Use Case 2: Code Generation with Claude
+
+**Problem:** Writing DiD or RCT analysis code is repetitive and error-prone.
+
+**Prompt example:**
+
+> "Write a Python script using statsmodels to estimate the ATE of a cash transfer on household consumption. The data has columns: household\_id, treatment, consumption\_post, consumption\_pre, district. Cluster standard errors at the district level."
+
+**Key principle:** Always review and test generated code. AI writes the boilerplate; you verify the logic.
+
+## Use Case 2: When It Works Best
+
+Claude/Copilot excel at:
+
+- Boilerplate regression specifications
+- Data cleaning pipelines (reshaping, merging, missing data)
+- Visualization code (coefficient plots, event studies)
+- Unit tests for your analysis code
+
+They struggle with:
+
+- Novel identification strategies
+- Choosing the right specification
+- Interpreting results in context
+
+## Use Case 3: Data Exploration with ChatGPT
+
+**Problem:** First look at a new dataset takes hours of manual EDA.
+
+**Prompt example:**
+
+> "Here are summary statistics for our Kenya transfer data [paste table]. What patterns do you notice? What would you check before running the main specification?"
+
+**Useful for:**
+
+- Spotting outliers and data quality issues
+- Suggesting balance checks
+- Generating hypotheses about heterogeneous effects
+
+**Always verify** — ChatGPT can misread tables or invent patterns.
+
+## Use Case 4: Writing and Communication
+
+**Problem:** Translating regression results into donor-ready language is time-consuming.
+
+**Prompt example:**
+
+> "I found that a \$1,000 transfer increases monthly consumption by \$23 (SE=8.2, p<0.01) after 12 months. Write a 2-sentence summary for a non-technical donor audience. Do not overstate the finding."
+
+**Also useful for:**
+
+- Drafting executive summaries of research reports
+- Translating technical memos into plain language
+- Preparing talking points for leadership briefings
+
+## What the Evidence Says
+
+```{=latex}
+\input{tables/uct_evidence.tex}
+```
+
+Key takeaway: UCTs consistently increase consumption and assets, with multiplier effects in local economies [@egger2022general].
+
+## Guardrails: When AI Gets It Wrong
+
+**Real risks in our context:**
+
+- **Hallucinated citations** — AI invents plausible-sounding papers that don't exist
+- **False precision** — Presenting made-up numbers with confidence intervals
+- **Causal language inflation** — Turning correlations into causal claims
+- **Context blindness** — Ignoring that Kenya results may not transfer to DRC
+
+**Rule of thumb:** If you can't verify it against a source, don't use it.
+
+## Practical Guardrails for GD
+
+| Risk | Mitigation |
+|------|-----------|
+| Hallucinated citations | Use NotebookLM (source-grounded) |
+| Incorrect code | Always run and test; review logic |
+| Overstated findings | Prompt for hedged language; verify numbers |
+| Data privacy | Never paste PII or beneficiary data into public AI tools |
+| Bias amplification | Check AI outputs against diverse evidence |
+
+## Getting Started: Your Next Steps
+
+1. **Install tools:** Claude (via GD license), NotebookLM (free with Google account)
+2. **Try one workflow this week:**
+   - Load a paper into NotebookLM and ask it 3 questions
+   - Ask Claude to write a data cleaning script you'd normally write manually
+3. **Share what works:** Post your use case to the internal library
+4. **Ask questions:** Reach out to me — I'm here to help you iterate
+
+## Workshop Format: Hands-On Session
+
+**Structure (60 min):**
+
+- 15 min — Concepts and demo (what you just saw)
+- 30 min — Hands-on: pick a use case, try it with your own data/papers
+- 15 min — Share results, troubleshoot, discuss
+
+**What to bring:**
+
+- A paper you've been meaning to read
+- A data task you've been putting off
+- Curiosity and healthy skepticism
+
+## References

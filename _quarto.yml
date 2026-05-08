@@ -1,0 +1,13 @@
+project:
+  type: default
+
+bibliography: references.bib
+
+format:
+  beamer:
+    theme: metropolis
+    include-in-header: theme.tex
+    aspectratio: 169
+    navigation: empty
+    pdf-engine: xelatex
+    keep-tex: true

@@ -1,0 +1,183 @@
+---
+title: "Using Claude AI to Run Research Better"
+subtitle: "A Practical Workshop for GiveDirectly Research Team"
+author: "Diego A. Martín"
+date: "May 2026"
+---
+
+## Why Claude?
+
+Claude is built for extended reasoning, careful analysis, and long-context work — exactly what research demands.
+
+- Handles up to 200K tokens of context (entire papers, datasets, codebases)
+- Strong at following nuanced instructions without cutting corners
+- Less prone to hallucination than alternatives when given source material
+- Excellent at code generation, especially Python and R for econometrics
+
+**This workshop:** Concrete workflows where Claude accelerates your research without compromising rigor.
+
+## Where Claude Fits in the Research Cycle
+
+| Stage | What Claude Does Well | What You Still Own |
+|-------|----------------------|-------------------|
+| Literature review | Summarize, compare, extract | Judging relevance and quality |
+| Research design | Draft pre-analysis plans, suggest specs | Identification strategy |
+| Data cleaning | Write pipelines, debug code | Validating output |
+| Estimation | Generate regression code, robustness checks | Interpreting results |
+| Writing | Draft sections, edit prose, format | Framing and argumentation |
+
+## Use Case 1: Code Generation for Econometrics
+
+**Prompt:**
+
+> "Write a Python script using linearmodels to estimate a difference-in-differences model. Outcome: monthly\_consumption. Treatment: received\_transfer (0/1). Time: post (0/1). Panel: household\_id. Cluster standard errors at village level. Include an event study specification with leads and lags."
+
+Claude generates complete, runnable code — not pseudocode.
+
+**Key advantage over Copilot:** You can explain the full research context and Claude adapts the code to your specific design.
+
+## Use Case 1: Iteration
+
+Claude remembers your full conversation. You can iterate:
+
+> "Now add household fixed effects and time-varying controls for household size and rainfall."
+
+> "The standard errors look too small. Switch to wild cluster bootstrap with 999 replications."
+
+> "Generate a coefficient plot for the event study with 95% CIs."
+
+Each follow-up builds on the previous code without re-explaining the setup.
+
+## Use Case 2: Debugging and Code Review
+
+**Paste your broken code and the error message:**
+
+> "This script throws a ValueError on line 34. Here's the full traceback: [paste]. The data has 12,000 observations across 200 villages. What's wrong?"
+
+Claude will:
+
+- Identify the bug (often shape mismatches, merge issues, or index problems)
+- Explain why it happened
+- Provide the fix
+- Suggest defensive checks to prevent recurrence
+
+## Use Case 3: Writing Research Memos
+
+**Prompt:**
+
+> "I ran a DiD comparing consumption in treatment vs. control villages before and after a \$1,000 transfer. The ATT is \$47/month (SE=12.3, p<0.01). The pre-trends test shows no significant differences. Write a 3-paragraph results summary for an internal research memo. Be precise about what we can and cannot claim causally."
+
+Claude produces careful, hedged academic prose — not marketing copy.
+
+## Use Case 3: Editing and Tightening
+
+Paste a draft paragraph and ask:
+
+> "Make this more concise. Cut filler words. Keep the causal claims precise."
+
+Or:
+
+> "Rewrite this for a non-technical donor audience. No jargon. Keep the key numbers."
+
+Claude adapts register and tone while preserving substance.
+
+## Use Case 4: Data Exploration and Validation
+
+**Upload or paste summary statistics, then ask:**
+
+> "Here's the balance table for our RCT. Are there any concerning imbalances? What would you check next?"
+
+> "Here are the descriptive stats for our outcome variable. The mean is 340 but the median is 180. What does this suggest about the distribution and how should it affect our estimation strategy?"
+
+Claude reasons through the implications — it doesn't just describe.
+
+## Use Case 5: Robustness and Specification Checks
+
+**Prompt:**
+
+> "I estimated the effect of cash transfers on consumption using OLS with village fixed effects. What robustness checks should I run? Consider: alternative specifications, sample restrictions, placebo tests, and sensitivity to outliers."
+
+Claude generates a structured checklist tailored to your design, not a generic list.
+
+**Follow up:**
+
+> "Write the code for checks 1, 3, and 5."
+
+## Use Case 6: Pre-Analysis Plan Drafting
+
+**Prompt:**
+
+> "Help me draft a pre-analysis plan for an RCT of unconditional cash transfers in DRC. Treatment: \$500 lump sum. Control: waitlist. Primary outcomes: consumption, assets, food security. Sample: 2,000 households across 40 villages. Randomization at village level. I want to pre-specify: primary estimating equation, secondary outcomes, heterogeneity analyses, and multiple testing correction."
+
+Claude produces a structured PAP draft you can refine — saving hours of blank-page time.
+
+## Prompting Principles for Research
+
+1. **Give full context** — Claude works better with more information, not less
+2. **Specify the format** — "Write a Python script" vs. "Explain how to..."
+3. **State your constraints** — "Cluster at village level," "Use robust SEs," "Keep it under 200 words"
+4. **Ask for reasoning** — "Explain why you chose this specification"
+5. **Iterate, don't restart** — Build on the conversation; Claude retains context
+
+## What Claude Gets Wrong (and How to Catch It)
+
+**Common failure modes:**
+
+- **Plausible but wrong code** — Runs without errors but implements the wrong estimator
+- **Outdated package syntax** — Uses deprecated function signatures
+- **Over-confident interpretation** — States results more strongly than warranted
+- **Missing edge cases** — Doesn't handle missing data or unbalanced panels unless asked
+
+**Mitigation:** Always run the code. Always check the logic. Use Claude as a fast first draft, not a final answer.
+
+## Claude vs. ChatGPT for Research
+
+| Dimension | Claude | ChatGPT |
+|-----------|--------|---------|
+| Long documents | Excellent (200K context) | Good (128K) |
+| Code accuracy | Strong, fewer hallucinations | Good, more verbose |
+| Following instructions | Very precise | Sometimes drifts |
+| Saying "I don't know" | More willing to flag uncertainty | Tends to confabulate |
+| Data analysis | No file execution | Can run code (Code Interpreter) |
+| Best for | Writing, code gen, reasoning | Quick exploration, running code |
+
+**Use both.** ChatGPT for quick data exploration with Code Interpreter. Claude for careful code generation, writing, and extended reasoning.
+
+## Security and Data Guidelines
+
+**Do NOT paste into Claude:**
+
+- Beneficiary PII (names, phone numbers, GPS coordinates)
+- Internal financial data or unreleased results
+- Access credentials or API keys
+
+**Safe to use:**
+
+- Aggregated summary statistics
+- Public or published data
+- Your own code and analysis scripts
+- Draft text and research memos (non-confidential)
+
+When in doubt, anonymize first.
+
+## Getting Started Today
+
+1. **Access:** Use Claude at claude.ai (GD has a team plan) or via API
+2. **Try this week:**
+   - Paste a script you're working on and ask Claude to review it
+   - Ask Claude to write one robustness check you've been putting off
+   - Draft a memo section and ask Claude to tighten it
+3. **Build the habit:** Start conversations with context — paste your data description, your research question, your current approach
+4. **Share:** Post your best prompts and outputs to the team use case library
+
+## Live Demo
+
+**Let's try it together:**
+
+- Bring a piece of code, a draft paragraph, or a research question
+- We'll prompt Claude live and see what comes back
+- We'll critique the output together — what's useful, what needs fixing
+
+**Remember:** The goal is to be faster and more rigorous, not to outsource your judgment.
+
+## References
